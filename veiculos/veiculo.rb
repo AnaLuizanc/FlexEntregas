@@ -4,9 +4,11 @@
 
 class Veiculo
   attr_accessor :tipo_veiculo, :combustivel_km_por_litro, :carga_maxima, :velocidade_media
-  def initialize(tipo_veiculo, combustivel_km_por_litro)
+  def initialize(tipo_veiculo, combustivel_km_por_litro, carga_maxima, velocidade_media)
     @tipo_veiculo = tipo_veiculo
     @combustivel_km_por_litro = combustivel_km_por_litro
+    @carga_maxima = carga_maxima
+    @velocidade_media = velocidade_media
   end
 
   def tempo(status_entrega)
@@ -14,9 +16,7 @@ class Veiculo
   end
 
   def valor_viagem(status_entrega)
-    if(@combustivel_km_por_litro)
       (status_entrega.distancia/@combustivel_km_por_litro)*6.10
-    end
   end
 
   def imprime
