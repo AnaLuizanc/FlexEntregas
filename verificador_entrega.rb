@@ -12,7 +12,8 @@ class VerificadorEntregas
           meio: meio.class.name,
           tempo: meio.tempo(status_entrega),
           custo: meio.valor_viagem(status_entrega),
-          status: "Disponível!"
+          status: "Disponível!",
+          veiculo: meio, # Passa o objeto para acesso ao metodo imprime
         }
       else
         {
@@ -27,12 +28,18 @@ class VerificadorEntregas
   #
   # @param resultados [Array<Hash>] Lista de hashes retornada por .verifica_entregas, contendo o status de cada meio de transporte.
   # @return [void]
+  #
+  # Para cada meio de transporte disponível, imprime as informações detalhadas do veículo
+  # (usando o metodo imprime da classe Veiculo) e os dados da entrega.
   def self.imprime_resultados(resultados)
     resultados.each do |res|
       if res[:status] == "Disponível!"
         custo = res[:custo] == 0.0 ? "Não se aplica" : "R$#{'%.2f' % res[:custo]}"
         puts "#{res[:meio]}: #{res[:status]}"
-        puts "    Tempo: #{'%.2f' % res[:tempo]}h, Custo: #{custo}"
+        res[:veiculo].imprime
+        puts "Informações da entrega:"
+        puts "\tTempo: #{'%.2f' % res[:tempo]}h, Custo: #{custo}"
+        puts
       else
         puts "#{res[:meio]}: #{res[:status]}"
       end

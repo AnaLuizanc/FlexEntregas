@@ -14,7 +14,7 @@ require_relative 'verificador_entrega'
 
 # Cria um objeto com o status da entrega atual
 status = StatusEntrega.new(
-  "chuva",      # clima
+  "sol",        # clima
   "terra",      # estrada
   "rural",      # zona
   30,           # distância em km
@@ -23,12 +23,12 @@ status = StatusEntrega.new(
 
 # Lista dos meios de transporte disponíveis
 # Cada meio de transporte é instanciado com seus atributos específicos:
-# tipo, consumo_combustível, carga máxima e velocidade média.
+# tipo, consumo_combustível_km_por_litro, carga máxima e velocidade média.
 meios = [
-  Moto.new("Moto", 10.0, 50.0, 60.0),
-  Bicicleta.new("Bicicleta", 0.0, 15.0, 20.0),
-  Cavalo.new("Cavalo", 0.0, 40.0, 25.0),
-  Drone.new("Drone", 5.0, 3.0, 80.0)
+  Moto.new("Moto", 35.0, 50.0, 60.0),
+  Bicicleta.new("Bicicleta", nil, 20.0, 15.0),
+  Cavalo.new("Cavalo", nil, 40.0, 15.0),
+  Drone.new("Drone", nil, 10.0, 70.0)
 ]
 
 # Executa a simulação
@@ -39,10 +39,5 @@ puts "Simulação de entrega:"
 puts "Condições: Clima=#{status.clima}, Estrada=#{status.estrada}, Zona=#{status.zona}, Distância=#{status.distancia}km, Peso=#{status.peso_carga}kg"
 puts "-" * 60
 
-resultados.each do |res|
-  if res[:status] == "Disponível!"
-    custo = res[:custo] == 0.0 ? "Não se aplica" : "R$#{'%.2f' % res[:custo]}"
-    puts "#{res[:meio]}: #{res[:status]}"
-    puts "    Tempo: #{'%.2f' % res[:tempo]}h, Custo: #{custo}"
-  end
-end
+# Imprime os resultados da verificação de entregas
+VerificadorEntregas.imprime_resultados(resultados)
