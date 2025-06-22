@@ -1,8 +1,10 @@
 # status_entrega.rb
+require_relative 'modulos/import_modulos'
+
 class StatusEntrega
   attr_accessor :clima, :estrada, :zona, :distancia, :peso_carga
 
-  def initialize(clima="sol", estrada="asfalto", zona="urbana", distancia=1, peso_carga = 1)
+  def initialize(clima=Clima::SOL, estrada=Estrada::ASFALTO, zona=Zona::URBANA, distancia=1, peso_carga = 1)
     @clima = clima
     @estrada = estrada
     @zona = zona
