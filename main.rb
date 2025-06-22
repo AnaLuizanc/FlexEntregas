@@ -1,3 +1,13 @@
+# Script principal para simulação de entregas com diferentes meios de transporte.
+#
+# Este arquivo executa uma simulação de entrega, utilizando as classes de veículos e o verificador de entregas.
+#
+# Exemplos de uso:
+#   ruby main.rb
+#
+# O script cria um objeto StatusEntrega, define os meios de transporte disponíveis,
+# executa a verificação de quais podem realizar a entrega e exibe os resultados no terminal.
+
 require_relative 'status_entrega'
 require_relative 'veiculos/import_relatives'
 require_relative 'verificador_entrega'
@@ -12,8 +22,10 @@ status = StatusEntrega.new(
 )
 
 # Lista dos meios de transporte disponíveis
+# Cada meio de transporte é instanciado com seus atributos específicos:
+# tipo, consumo_combustível, carga máxima e velocidade média.
 meios = [
-  Moto.new("Moto", 10.0, 50.0, 60.0),         # tipo, consumo, carga_maxima, velocidade_media
+  Moto.new("Moto", 10.0, 50.0, 60.0),
   Bicicleta.new("Bicicleta", 0.0, 15.0, 20.0),
   Cavalo.new("Cavalo", 0.0, 40.0, 25.0),
   Drone.new("Drone", 5.0, 3.0, 80.0)
