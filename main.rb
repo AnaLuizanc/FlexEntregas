@@ -28,8 +28,9 @@ puts "Condições: Clima=#{status.clima}, Estrada=#{status.estrada}, Zona=#{stat
 puts "-" * 60
 
 resultados.each do |res|
-  if res[:status] = "Disponível o veiculo!!"
+  if res[:status] == "Disponível o veiculo!!"
+    custo = res[:custo] == 0.0 ? "Não se aplica" : "R$#{'%.2f' % res[:custo]}"
     puts "#{res[:meio]}: #{res[:status]}"
-    puts "    Tempo: #{res[:tempo]}h, Custo: R$#{res[:custo]}"
+    puts "    Tempo: #{'%.2f' % res[:tempo]}h, Custo: #{custo}"
   end
 end

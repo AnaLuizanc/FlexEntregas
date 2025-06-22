@@ -16,7 +16,11 @@ class Veiculo
   end
 
   def valor_viagem(status_entrega)
+    if @combustivel_km_por_litro.nil? || @combustivel_km_por_litro == 0.0
+      0.0 # Bicicleta e Cavalo não usam combustível
+    else
       (status_entrega.distancia/@combustivel_km_por_litro)*6.10
+    end
   end
 
   def imprime
