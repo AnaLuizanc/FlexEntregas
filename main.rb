@@ -16,7 +16,7 @@ meios = [
   Moto.new("Moto", 10.0, 50.0, 60.0),         # tipo, consumo, carga_maxima, velocidade_media
   Bicicleta.new("Bicicleta", 0.0, 15.0, 20.0),
   Cavalo.new("Cavalo", 0.0, 40.0, 25.0),
-  Voador.new("Drone", 5.0, 3.0, 80.0)
+  Drone.new("Drone", 5.0, 3.0, 80.0)
 ]
 
 # Executa a simulação
